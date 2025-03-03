@@ -1,4 +1,5 @@
 const formData = require("../data/formData");
+import { expect } from '@playwright/test';
 
 class MainPage {
   constructor(page) {
