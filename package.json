@@ -1,0 +1,20 @@
+{
+  "name": "test_tagesru",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "allure:generate": "[ -d allure-results ] && npx allure generate allure-results -o allure-report || echo 'No allure-results found, skipping report generation'",
+    "allure:open": "npx allure open allure-report --port 8080",
+    "allure:report": "npm run allure:generate && npm run allure:open",
+    "test:allure": "rm -rf allure-report && mkdir -p allure-results allure-report && npx playwright test && npm run allure:generate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "allure-playwright": "^3.2.0"
+  }
+}

@@ -1,0 +1,16 @@
+# Node dependencies
+node_modules/
+package-lock.json
+
+# Playwright test results
+test-results/
+allure-results/
+allure-report/
+playwright-report/
+
+# Environment variables
+.env
+
+# Docker files
+docker-compose.override.yml
+.DS_Store
