@@ -10,50 +10,50 @@ test.describe('Form validation', () => {
     await mainPage.navigate();
   });
   
-    // test('Should submit the form successfully and verify resubmission', async ({ page }) => {
-    //     await mainPage.clickForm();
-    //     await expect(mainPage.page).toHaveURL(/\/#form/);
-    //     await mainPage.fillForm(formData.validData);
+    test('Should submit the form successfully and verify resubmission', async ({ page }) => {
+        await mainPage.clickForm();
+        await expect(mainPage.page).toHaveURL(/\/#form/);
+        await mainPage.fillForm(formData.validData);
 
-    //     // Ensure values in the fields match
-    //     await expect(mainPage.nameField).toHaveValue(formData.validData.name);
-    //     await expect(mainPage.phoneField).toHaveValue(/\+?7\s?999\s?999\s?99\s?99/);
-    //     await expect(mainPage.companyField).toHaveValue(formData.validData.company);
-    //     await expect(mainPage.emailField).toHaveValue(formData.validData.email);
-    //     await expect(mainPage.commentField).toHaveValue(formData.validData.comment);
-    //     await mainPage.submitForm();
+        // Ensure values in the fields match
+        await expect(mainPage.nameField).toHaveValue(formData.validData.name);
+        await expect(mainPage.phoneField).toHaveValue(/\+?7\s?999\s?999\s?99\s?99/);
+        await expect(mainPage.companyField).toHaveValue(formData.validData.company);
+        await expect(mainPage.emailField).toHaveValue(formData.validData.email);
+        await expect(mainPage.commentField).toHaveValue(formData.validData.comment);
+        await mainPage.submitForm();
 
-    //     // Verify successful form submission
-    //     await mainPage.verifySuccessMessages();
+        // Verify successful form submission
+        await mainPage.verifySuccessMessages();
 
-    //     // Click "Resubmit" button and check if form reappears
-    //     await mainPage.formSuccessButton.click();
-    //     await mainPage.nameField.waitFor({ state: 'visible', timeout: 6000 });
+        // Click "Resubmit" button and check if form reappears
+        await mainPage.formSuccessButton.click();
+        await mainPage.nameField.waitFor({ state: 'visible', timeout: 6000 });
 
-    //     // Ensure form fields are visible again
-    //     await mainPage.verifyForm();
-    // });
+        // Ensure form fields are visible again
+        await mainPage.verifyForm();
+    });
 
-    // test('Verify form submission with a long name', async ({ page }) => { // Fields ideally should have limit        
-    //     await mainPage.fillForm(formData.longNameFields);
-    //     await mainPage.submitForm();
+    test('Verify form submission with a long name', async ({ page }) => { // Fields ideally should have limit        
+        await mainPage.fillForm(formData.longNameFields);
+        await mainPage.submitForm();
 
-    //     await mainPage.verifySuccessMessages();
-    // });
+        await mainPage.verifySuccessMessages();
+    });
 
-    // test('Verify form submission with special chars', async ({ page }) => { // Special chars should be forbidden
-    //     await mainPage.fillForm(formData.specialChars);
-    //     await mainPage.submitForm();
+    test('Verify form submission with special chars', async ({ page }) => { // Special chars should be forbidden
+        await mainPage.fillForm(formData.specialChars);
+        await mainPage.submitForm();
 
-    //     await mainPage.verifySuccessMessages();   
-    // });
+        await mainPage.verifySuccessMessages();   
+    });
 
-    // test('Verify validation for name field with only space', async ({ page }) => { // A name field containing only spaces should probably be invalid
-    //     await mainPage.fillForm(formData.spaceInName);
-    //     await mainPage.submitForm();
+    test('Verify validation for name field with only space', async ({ page }) => { // A name field containing only spaces should probably be invalid
+        await mainPage.fillForm(formData.spaceInName);
+        await mainPage.submitForm();
         
-    //     await mainPage.verifySuccessMessages();   
-    // });
+        await mainPage.verifySuccessMessages();   
+    });
 
     test('Should display errors when submitting empty fields', async ({ page }) => { 
         await mainPage.fillForm(formData.emptyFields);
