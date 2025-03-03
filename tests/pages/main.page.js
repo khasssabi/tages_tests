@@ -8,19 +8,17 @@ class MainPage {
     this.aboutLink = this.page.getByLabel("О компании");
     this.academyLink = this.page.getByLabel("Академия");
     this.eventsLink = this.page.getByLabel("Мероприятия");
-    this.blogLink = this.page
-      .getByRole("navigation")
-      .getByRole("link", { name: "Блог" });
-    this.vacanciesLink = this.page
-      .getByRole("navigation")
-      .getByRole("link", { name: "Вакансии" });
+    this.blogLink = this.page.getByRole("navigation").getByRole("link", { name: "Блог" });
+    this.vacanciesLink = this.page.getByRole("navigation").getByRole("link", { name: "Вакансии" });
     this.contactsLink = this.page.getByLabel("Контакты");
     this.logo = this.page.locator(".header__logo");
+
 
     // Inquiry Links
     this.phoneNumber = page.locator('a[href="tel:+74956402394"]').nth(0);
     this.form = this.page.getByRole("link", { name: "Форма запроса" });
     this.submitButton = this.page.getByRole("button", { name: "Отправить" });
+
 
     // Form
     this.nameField = this.page.getByRole("textbox", { name: "Имя*" });
@@ -28,6 +26,14 @@ class MainPage {
     this.companyField = this.page.getByRole("textbox", { name: "Компания" });
     this.emailField = this.page.getByRole("textbox", { name: "Почта*" });
     this.commentField = this.page.getByRole("textbox", { name: "Комментарий" });
+
+    // Elements displayed after successful form submission
+    this.formSuccessTitle = page.locator('.form__success-badge-title');
+    this.formSuccessButton = page.locator('.form__success-badge-button');
+
+    // Invalid value
+    this.formError = page.locator('.form__error');
+
 
     // Partners Links
     this.partnerRolf = this.page.getByRole("link", { name: "Рольф" });
@@ -140,6 +146,20 @@ class MainPage {
   // Submit Form
   async submitForm() {
     await this.submitButton.click();
+  }
+  
+  // Verify Form Submission
+  async verifySuccessMessages() {
+    await expect(this.formError).not.toBeVisible();
+    await expect(this.formSuccessTitle).toBeVisible();
+    await expect(this.formSuccessTitle).toHaveText('Ваше обращение получено');
+    await expect(this.formSuccessButton).toBeVisible();
+  }
+
+  async verifyForm() {
+    await expect(this.nameField).toBeVisible();
+    await expect(this.phoneField).toBeVisible();
+    await expect(this.emailField).toBeVisible();
   }
 }
 module.exports = MainPage;

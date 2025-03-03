@@ -24,17 +24,13 @@ test.describe("Validate Navigation Between Header Links in a Single Flow", () =>
     await test.step("Navigate to Academy Page and verify", async () => {
       await mainPage.navigateToAcademy();
       await expect(mainPage.page).toHaveURL(/\/academy\/?$/);
-      await expect(
-        mainPage.page.getByRole("heading", { name: /TAGES.*ACADEMY/ }),
-      ).toBeVisible();
+      await expect(mainPage.page.getByRole("heading", { name: /TAGES.*ACADEMY/ })).toBeVisible();
     });
 
     await test.step("Navigate to Contacts Page and verify", async () => {
       await mainPage.navigateToContacts();
       await expect(mainPage.page).toHaveURL(/\/contacts\/?$/);
-      await expect(
-        mainPage.page.getByRole("heading", { name: /Контакты/ }),
-      ).toBeVisible();
+      await expect(mainPage.page.getByRole("heading", { name: /Контакты/ })).toBeVisible();
     });
   });
 });
