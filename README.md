@@ -66,6 +66,13 @@ npx playwright test
 npx playwright test tests/specs/main.header_menu.spec.js
 ```
 
+### Run a Specific Test File In Headed Mode In Chrome only
+
+```
+npx playwright test tests/specs/main.links_validation.spec.js --headed --project=chromium
+```
+
+
 ### Run Tests in Headed Mode
 
 ```
@@ -103,16 +110,16 @@ npx playwright test
 npm run allure:report
 ```
 
-### Delete Previous Test Reports:
-
-```
-docker run --rm -p 8080:8080 tages_tests
-```
-
 ### Manually Open the Latest Test Report:
 
 ```
 npm run allure:open
+```
+
+### Delete Previous Test Reports:
+
+```
+rm -rf allure-results allure-report test-results
 ```
 
 ---
